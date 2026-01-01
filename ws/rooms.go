@@ -83,7 +83,7 @@ func (r *Rooms) Upgrade(w http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		log.Debug().Err(err).Msg("Websocket upgrade")
 		w.WriteHeader(400)
-		_, _ = w.Write([]byte(fmt.Sprintf("Upgrade failed %s", err)))
+		_, _ = fmt.Fprintf(w, "Upgrade failed %s", err)
 		return
 	}
 
